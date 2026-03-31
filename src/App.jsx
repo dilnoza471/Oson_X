@@ -5,11 +5,19 @@ import AdminDashboard from './pages/admin/dashboard.jsx';
 import ProtectedRoute from './components/shared/ProtectedRoute.jsx';
 
 export default function App() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const shop = urlParams.get('shop');
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
       <Routes>
-        <Route path="/?shop=shopId" element={<ShopPage />} />
-        <Route path="/" element={<Navigate to="/admin/login" replace />} />
+        <Route
+          path="/"
+          element={
+            shop ? <Navigate to={`/shop/${shop}`} replace /> : <Navigate to="/admin/login" replace />
+          }
+        />
+        <Route path="/shop/:shopId" element={<ShopPage />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route
           path="/admin/dashboard"
