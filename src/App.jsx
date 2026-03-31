@@ -8,8 +8,8 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
       <Routes>
-        <Route path="/shop/:shopId" element={<ShopPage />} />
-        <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
+        <Route path="/?shop=shopId" element={<ShopPage />} />
+        <Route path="/" element={<Navigate to="/admin/login" replace />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route
           path="/admin/dashboard"
@@ -19,7 +19,6 @@ export default function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="*" element={<Navigate to="/shop/demo" replace />} />
       </Routes>
     </div>
   );
