@@ -11,8 +11,8 @@ export default function ShopPage() {
   const { shopId } = useParams();
   const [activeCategory, setActiveCategory] = useState(null);
   const { shop, loading: shopLoading, error: shopError } = useShop(shopId);
-  const { categories, loading: categoriesLoading, error: categoriesError } = useCategories(shopId);
-  const { products, loading: productsLoading, error: productsError } = useProducts(shopId, activeCategory);
+  const { categories, loading: categoriesLoading } = useCategories(shopId);
+  const { products, loading: productsLoading } = useProducts(shopId, activeCategory);
 
   useEffect(() => {
     initTelegramWebApp();
@@ -36,8 +36,6 @@ export default function ShopPage() {
     );
   }
 
-  const errorMessages = [categoriesError?.message, productsError?.message].filter(Boolean);
-
   return (
     <div className="min-h-screen bg-slate-50">
       <div className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 px-4 py-5 backdrop-blur">
@@ -49,14 +47,6 @@ export default function ShopPage() {
 
       <main className="mx-auto max-w-5xl px-4 pb-10 pt-4">
         <CategoryTabs categories={categories} activeId={activeCategory} onChange={setActiveCategory} />
-
-        {errorMessages.length > 0 && (
-          <div className="mt-6 rounded-3xl border border-red-200 bg-red-50 p-6 text-sm text-red-700">
-            {errorMessages.map((message) => (
-              <p key={message}>{message}</p>
-            ))}
-          </div>
-        )}
 
         {products.length === 0 ? (
           <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-6 text-slate-600">

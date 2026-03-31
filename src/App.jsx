@@ -14,7 +14,7 @@ export default function App() {
         <Route
           path="/"
           element={
-            shop ? <Navigate to={`/shop/${shop}`} replace /> : <Navigate to="/admin/login" replace />
+            shop ? <ShopPage shopId={shop} /> : <AdminLogin />
           }
         />
         <Route path="/shop/:shopId" element={<ShopPage />} />
