@@ -9,11 +9,13 @@ export default function useProducts(shopId, categoryId) {
   const fetchProducts = useCallback(async () => {
     if (!shopId) {
       setProducts([]);
+      setError(null);
       setLoading(false);
       return;
     }
 
     setLoading(true);
+    setError(null);
     let query = supabase
       .from('products')
       .select('*')
@@ -31,6 +33,7 @@ export default function useProducts(shopId, categoryId) {
       setProducts([]);
     } else {
       setProducts(data || []);
+      setError(null);
     }
     setLoading(false);
   }, [shopId, categoryId]);

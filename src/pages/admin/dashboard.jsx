@@ -20,8 +20,8 @@ export default function AdminDashboard() {
   const [editingProduct, setEditingProduct] = useState(null);
   const [statusMessage, setStatusMessage] = useState('');
 
-  const { categories, loading: categoriesLoading, refetch: refetchCategories } = useCategories(shopId);
-  const { products, loading: productsLoading, setProducts } = useProducts(shopId);
+  const { categories, loading: categoriesLoading, error: categoriesError, refetch: refetchCategories } = useCategories(shopId);
+  const { products, loading: productsLoading, error: productsError, setProducts } = useProducts(shopId);
 
   // Auto-clear status message after 3 seconds
   const showStatus = useCallback((msg) => {
@@ -61,6 +61,18 @@ export default function AdminDashboard() {
 
     loadAdminShop();
   }, [session, showStatus]);
+
+  useEffect(() => {
+    if (categoriesError) {
+      showStatus(categoriesError.message);
+    }
+  }, [categoriesError, showStatus]);
+
+  useEffect(() => {
+    if (productsError) {
+      showStatus(productsError.message);
+    }
+  }, [productsError, showStatus]);
 
   async function handleLogout() {
     await supabase.auth.signOut();
