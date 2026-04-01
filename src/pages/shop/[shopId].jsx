@@ -7,8 +7,9 @@ import useProducts from '../../hooks/useProducts.js';
 import useShop from '../../hooks/useShop.js';
 import { initTelegramWebApp } from '../../lib/telegram.js';
 
-export default function ShopPage() {
-  const { shopId } = useParams();
+export default function ShopPage({ shopId: propShopId }) {
+  const { shopId: routeShopId } = useParams();
+  const shopId = propShopId ?? routeShopId;
   const [activeCategory, setActiveCategory] = useState(null);
   const { shop, loading: shopLoading, error: shopError } = useShop(shopId);
   const { categories, loading: categoriesLoading } = useCategories(shopId);
