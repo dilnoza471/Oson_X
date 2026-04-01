@@ -110,7 +110,7 @@ export default function AdminDashboard() {
 
   setShowForm(false);
   setEditingProduct(null);
-  showStatus('Saved successfully.');
+  showStatus('Muvaffaqiyatli saqlandi.');
 }
 
   async function handleToggleStatus(product) {
@@ -149,7 +149,7 @@ export default function AdminDashboard() {
   }
 
   setProducts((current) => current.filter((item) => item.id !== product.id));
-  showStatus('Product deleted.');
+  showStatus('Mahsulot o\'chirildi.');
 }
 
   async function handleCreateCategory(name) {
@@ -165,7 +165,7 @@ export default function AdminDashboard() {
     }
 
     refetchCategories();
-    showStatus('Category added.');
+    showStatus('Kategoriya qo\'shildi.');
   }
 
   async function handleDeleteCategory(category) {
@@ -200,7 +200,7 @@ export default function AdminDashboard() {
   }
 
   refetchCategories();
-  showStatus('Category deleted.');
+  showStatus('Kategoriya o\'chirildi.');
 }
 
   const activeProducts = useMemo(() => products || [], [products]);
@@ -227,7 +227,7 @@ export default function AdminDashboard() {
             onClick={handleLogout}
             className="rounded-3xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white hover:bg-slate-800"
           >
-            Logout
+            Chiqish
           </button>
         </div>
       </div>
@@ -244,7 +244,7 @@ export default function AdminDashboard() {
                 : 'border border-slate-200 bg-white text-slate-700 hover:bg-slate-50'
             }`}
           >
-            Products
+            Mahsulotlar
           </button>
           <button
             type="button"
@@ -255,7 +255,7 @@ export default function AdminDashboard() {
                 : 'border border-slate-200 bg-white text-slate-700 hover:bg-slate-50'
             }`}
           >
-            Categories
+            Kategoriyalar
           </button>
         </div>
 
@@ -272,7 +272,7 @@ export default function AdminDashboard() {
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h2 className="text-xl font-semibold text-slate-900">Products</h2>
-                <p className="mt-1 text-sm text-slate-600">Manage product inventory for your shop.</p>
+                <p className="mt-1 text-sm text-slate-600">Mahsulotlar ro'yxati</p>
               </div>
               <button
                 type="button"
@@ -282,17 +282,17 @@ export default function AdminDashboard() {
                 }}
                 className="rounded-3xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white hover:bg-slate-800"
               >
-                Add product
+                Mahsulot qo'shish
               </button>
             </div>
 
             {productsLoading ? (
               <div className="rounded-3xl border border-slate-200 bg-white p-6 text-slate-600">
-                Loading products…
+                Mahsulotlar yuklanmoqda…
               </div>
             ) : activeProducts.length === 0 ? (
               <div className="rounded-3xl border border-slate-200 bg-white p-6 text-slate-600">
-                No products yet. Add your first product above.
+                Mahsulotlar mavjud emas. Yuqoridagi tugma orqali birinchi mahsulotni qo'shing.
               </div>
             ) : (
               <ProductList
@@ -304,6 +304,7 @@ export default function AdminDashboard() {
                   setShowForm(true);
                 }}
                 onDelete={handleDeleteProduct}
+                setProducts={setProducts} 
               />
             )}
           </section>
@@ -312,18 +313,18 @@ export default function AdminDashboard() {
           <section className="space-y-6">
             <div>
               <h2 className="text-xl font-semibold text-slate-900">Categories</h2>
-              <p className="mt-1 text-sm text-slate-600">Create and remove categories for this shop.</p>
+              <p className="mt-1 text-sm text-slate-600">Kategoriyalarni yaratish va o'chirish</p>
             </div>
 
             <CategoryForm onCreate={handleCreateCategory} />
 
             {categoriesLoading ? (
               <div className="rounded-3xl border border-slate-200 bg-white p-6 text-slate-600">
-                Loading categories…
+                Kategoriyalar yuklanmoqda…
               </div>
             ) : categories.length === 0 ? (
               <div className="rounded-3xl border border-slate-200 bg-white p-6 text-slate-600">
-                No categories yet.
+                Kategoriyalar mavjud emas. Yuqoridagi tugma orqali birinchi kategoriyani qo'shing.
               </div>
             ) : (
               <div className="space-y-3">
@@ -338,7 +339,7 @@ export default function AdminDashboard() {
                       onClick={() => handleDeleteCategory(category)}
                       className="rounded-3xl border border-red-200 bg-red-50 px-4 py-2 text-sm font-semibold text-red-700 hover:bg-red-100"
                     >
-                      Delete
+                      Olib tashlash
                     </button>
                   </div>
                 ))}

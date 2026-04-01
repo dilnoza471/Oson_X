@@ -37,13 +37,12 @@ useEffect(() => {
   test();
 }, [shopId]);
 
-// add this somewhere visible in your JSX
 
 
   if (shopLoading || categoriesLoading || productsLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4">
-        <div className="rounded-3xl bg-white p-6 shadow-soft">Loading shop...</div>
+        <div className="rounded-3xl bg-white p-6 shadow-soft">Yuklanmoqda...</div>
       </div>
     );
   }
@@ -52,7 +51,7 @@ useEffect(() => {
     return (
       <div className="min-h-screen px-4 py-10">
         <div className="rounded-3xl border border-red-200 bg-red-50 p-6 text-red-700">
-          Failed to load shop. {shopError.message}
+          Yuklab bo\'lmadi. {shopError.message}
         </div>
         <div style={{ fontSize: 11, padding: 8, wordBreak: 'break-all', background: '#fff' }}>
           {debugMsg || 'loading...'}
@@ -66,7 +65,7 @@ useEffect(() => {
       <div className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 px-4 py-5 backdrop-blur">
         <div className="mx-auto max-w-5xl">
           <h1 className="text-2xl font-semibold text-slate-900">{shop?.name || 'Shop'}</h1>
-          <p className="mt-2 text-sm text-slate-600">Browse products and contact the seller instantly.</p>
+          <p className="mt-2 text-sm text-slate-600">Mahsulotlarni ko'rish va sotuvchiga darhol aloqada bo'lish.</p>
         </div>
       </div>
 
@@ -75,7 +74,7 @@ useEffect(() => {
 
         {products.length === 0 ? (
           <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-6 text-slate-600">
-            No products found in this category.
+            Bu kategoriyada mahsulot topilmadi.
           </div>
         ) : (
           <div className="mt-6 grid gap-4 sm:grid-cols-2">

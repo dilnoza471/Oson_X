@@ -39,8 +39,8 @@ export default function AdminLogin() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-10">
       <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-soft">
-        <h1 className="text-2xl font-semibold text-slate-900">Admin Login</h1>
-        <p className="mt-2 text-sm text-slate-600">Sign in to manage your shop products and categories.</p>
+        <h1 className="text-2xl font-semibold text-slate-900">Admin tizimga kirish</h1>
+        <p className="mt-2 text-sm text-slate-600">Tizimga kirish uchun quyidagi maydonlarni to'ldiring.</p>
 
         <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
           <label className="block">
@@ -55,7 +55,7 @@ export default function AdminLogin() {
           </label>
 
           <label className="block">
-            <span className="text-sm font-medium text-slate-700">Password</span>
+            <span className="text-sm font-medium text-slate-700">Parol</span>
             <input
               value={password}
               onChange={(event) => setPassword(event.target.value)}
@@ -72,7 +72,7 @@ export default function AdminLogin() {
             disabled={submitting}
             className="w-full rounded-3xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
           >
-            {submitting ? 'Signing in...' : 'Login'}
+            {submitting ? 'Tizimga kirilmoqda...' : 'Tizimga kirish'}
           </button>
         </form>
       </div>

@@ -11,7 +11,7 @@ export default function CategoryTabs({ categories, activeId, onChange }) {
               : 'border-slate-200 bg-white text-slate-700 hover:border-slate-400'
           }`}
         >
-          All
+          Hammasi
         </button>
         {categories.map((category) => (
           <button

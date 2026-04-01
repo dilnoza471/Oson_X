@@ -15,12 +15,12 @@ export default function CategoryForm({ onCreate }) {
   return (
     <form className="mb-6 flex flex-col gap-3 rounded-3xl border border-slate-200 bg-white p-5 shadow-soft" onSubmit={handleSubmit}>
       <div>
-        <label className="block text-sm font-medium text-slate-700">New category</label>
+        <label className="block text-sm font-medium text-slate-700">Yangi kategoriya</label>
         <input
           value={name}
           onChange={(event) => setName(event.target.value)}
           required
-          placeholder="Category name"
+          placeholder="Kategoriya nomi"
           className="mt-2 w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none focus:border-slate-400"
         />
       </div>
@@ -29,7 +29,7 @@ export default function CategoryForm({ onCreate }) {
         disabled={submitting}
         className="w-full rounded-3xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
       >
-        {submitting ? 'Adding…' : 'Add category'}
+        {submitting ? 'Q\'shilmoqda…' : 'Kategoriya qo\'shish'}
       </button>
     </form>
   );

@@ -1,8 +1,8 @@
 export default function StatusBadge({ status }) {
   const statusMap = {
-    in_stock: { label: 'In stock', className: 'bg-emerald-100 text-emerald-700' },
-    out_of_stock: { label: 'Out of stock', className: 'bg-slate-100 text-slate-700' },
-    coming_soon: { label: 'Coming soon', className: 'bg-amber-100 text-amber-700' },
+    in_stock: { label: 'Sotuvda', className: 'bg-emerald-100 text-emerald-700' },
+    out_of_stock: { label: 'Sotuvda yo\'q', className: 'bg-slate-100 text-slate-700' },
+    coming_soon: { label: 'Tez orada', className: 'bg-amber-100 text-amber-700' },
   };
 
   const statusConfig = statusMap[status] || statusMap.in_stock;
