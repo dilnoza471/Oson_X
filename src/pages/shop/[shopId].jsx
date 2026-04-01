@@ -18,6 +18,26 @@ export default function ShopPage({ shopId: propShopId }) {
   useEffect(() => {
     initTelegramWebApp();
   }, []);
+  const [debugMsg, setDebugMsg] = useState('');
+
+useEffect(() => {
+  async function test() {
+    try {
+      const { data, error } = await supabase
+        .from('shops')
+        .select('*')
+        .eq('id', shopId)
+        .single();
+      setDebugMsg(JSON.stringify({ data, error, shopId }));
+    } catch (err) {
+      setDebugMsg('CAUGHT: ' + err.message);
+    }
+  }
+  test();
+}, [shopId]);
+
+// add this somewhere visible in your JSX
+
 
   if (shopLoading || categoriesLoading || productsLoading) {
     return (
@@ -32,6 +52,9 @@ export default function ShopPage({ shopId: propShopId }) {
       <div className="min-h-screen px-4 py-10">
         <div className="rounded-3xl border border-red-200 bg-red-50 p-6 text-red-700">
           Failed to load shop. {shopError.message}
+        </div>
+        <div style={{ fontSize: 11, padding: 8, wordBreak: 'break-all', background: '#fff' }}>
+          {debugMsg || 'loading...'}
         </div>
       </div>
     );
