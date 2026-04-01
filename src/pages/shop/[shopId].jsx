@@ -6,6 +6,7 @@ import useCategories from '../../hooks/useCategories.js';
 import useProducts from '../../hooks/useProducts.js';
 import useShop from '../../hooks/useShop.js';
 import { initTelegramWebApp } from '../../lib/telegram.js';
+import { supabase } from '../../lib/supabase.js';
 
 export default function ShopPage({ shopId: propShopId }) {
   const { shopId: routeShopId } = useParams();
